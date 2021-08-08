@@ -1,0 +1,118 @@
+<ion-header>
+  <app-header [data]="headerTitle"></app-header>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="myProfile">
+    <ion-item no-padding>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4">
+            <ion-avatar class="img">
+              <img
+                src="assets/image/noImage.jpeg"
+                onerror="this.onerror=null;this.src='assets/image/noImage.jpeg';"
+              />
+            </ion-avatar>
+          </ion-col>
+
+          <ion-col size="8">
+            <ion-row class="row">
+              <ion-col>
+                <span>{{myProfile.name}}</span>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <span>{{myProfile.phone}}</span>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <span>{{myProfile.email}}</span>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-button
+                  color="primary"
+                  class="btn"
+                  color="light"
+                  (click)="editProfile()"
+                  fill="clear"
+                  >Edit
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-row>
+      <ion-col class="ion-align-self-start" size="6">
+        <h3>Addresses</h3>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button
+          type="button"
+          class="adbutton"
+          fill="clear"
+          (click)="presentModal()"
+        >
+          Address
+          <ion-icon class="icon" name="add"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-list *ngFor="let a of addressArray; let i=index">
+      <ion-card>
+      <ion-label>
+
+          <p class="address">
+            <ion-text> {{a.customer_name}} </ion-text>
+          </p>
+          <p class="address">
+            <ion-text> {{a.phone}} </ion-text>
+          </p>
+          <p class="address">
+            <ion-text> {{a.address}} </ion-text>
+          </p>
+          <p class="address">
+            <ion-text> {{a.state_name}} </ion-text>
+          </p>
+          <p class="address">
+            <ion-text> {{a.pincode}} </ion-text>
+          </p>
+          <ion-row>
+            <ion-col class="ion-float-left" size="6">
+              <ion-button
+                class="ion-text-start"
+                type="button"
+                expand="block"
+                (click)="editAddress(a)"
+                class="editButton"
+                fill="clear"
+                >Edit</ion-button
+              >
+            </ion-col>
+            <ion-col class="ion-float-right" size="6">
+              <ion-button
+                type="button"
+                expand="block"
+                (click)="deleteAddress(a)"
+                fill="clear"
+                >Delete</ion-button
+              >
+            </ion-col>
+          </ion-row>
+      </ion-label>
+    </ion-card>
+    </ion-list>
+  </div>
+</ion-content>
+<ion-footer>
+  <app-footer></app-footer>
+</ion-footer>

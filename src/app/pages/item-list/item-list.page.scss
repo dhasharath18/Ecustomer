@@ -1,0 +1,53 @@
+
+.Mt-2{
+    margin-top:2px
+}
+.image{
+ 
+     border-radius:6px
+}
+.nowrap{
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+    overflow: hidden;   
+}
+.pricing{
+    color: #ff3200;
+    font-size: 18px;
+    padding-right: 4px;
+}
+.icon{
+    margin-top:-3px
+}
+.col{
+    display:flex;
+    justify-content: center;
+    align-items: center
+}
+.color{
+    color:#a8a3a1
+}
+ion-thumbnail{
+    height: 65px;
+    width: 23%
+}
+.btn{
+    text-transform: none;
+    color: var(--ion-color-dark-tint)
+}
+.save{
+    color: #000000;
+    font-size: 18px;
+}
+.thumbnail{
+    height: 65px;
+    width: 23%
+}
+.pad{
+    padding:10px
+}
+.data{
+    padding:10px;
+    color:#ff3200;
+    font-size: 18px;
+}

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button icon-only clear [routerLink]="'/profile'">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Manage Address</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="updateAddressForm" (ngSubmit)="submitForm()">
+
+    <ion-item no-padding>
+      <ion-label position="floating">
+        Name<span class="mandatory">*</span>
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="newName" formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item no-padding>
+      <ion-label position="floating">
+        Phone<span class="mandatory">*</span>
+      </ion-label>
+      <ion-input type="number" [(ngModel)]="newPhone" formControlName="phone"></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label position="floating">
+        Address<span class="mandatory">*</span>
+      </ion-label>
+      <ion-textarea rows="5" [(ngModel)]="newAddress" cols="50" formControlName="address">
+      </ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">
+        Select State<span class="mandatory">*</span>
+      </ion-label>
+      <ion-select [(ngModel)]="newState" [compareWith]="compareWith" formControlName="state">
+        <ion-select-option value="{{s.id}}" *ngFor="let s of states">{{s.state_name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item no-padding>
+      <ion-label position="floating">
+        Pincode<span class="mandatory">*</span>
+      </ion-label>
+      <ion-input type="number" [(ngModel)]="newPincode" formControlName="pincode"></ion-input>
+    </ion-item>
+    <ion-button class="sbutton" type="submit" expand="block" [disabled]="!updateAddressForm.valid">Submit</ion-button>
+  </form>
+</ion-content>

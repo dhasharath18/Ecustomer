@@ -1,0 +1,23 @@
+.error {
+    color: #ff3200;
+    padding: 10px;
+}
+.btn{
+    margin-right: 25px;
+    margin-left: 25px;
+}
+.mandatory{
+    color:#ff3200;
+}
+
+ion-content{
+    --background: rgb(0 0 0 / 13%);
+    --color: var(--ion-text-color, #000);
+}
+
+ion-item{
+    margin-top:10px;
+    --background: rgb(0 0 0 / 13%);
+    padding: 5px;
+    margin: 10px;
+}

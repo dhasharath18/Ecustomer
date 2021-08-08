@@ -1,0 +1,60 @@
+
+ion-content{
+    --background: rgb(0 0 0 / 13%);
+    --color: var(--ion-text-color, #000);
+}
+
+ion-item{
+    margin: 10px;
+    --background: rgb(0 0 0 / 13%);}
+
+.btn{
+    padding: 5px;
+    height: 40px;
+    margin-left: 25px;
+    margin-right: 25px
+   
+}
+
+
+.forgot-password {
+  color:red;
+    text-align: start;
+}
+
+.int{
+    color:white
+}
+.log{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+.reg{
+    font-weight:200px;
+    text-align: center;
+}
+.register{
+    display: grid;
+    justify-content:center;
+    align-items:center;
+    color:red
+}
+
+.mandatory{
+    color: #ff3200
+}
+.center{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.image{
+    height: auto;
+    width: 30%;
+    margin-top: 10px;
+    border-radius:100%;
+}
+.padding{
+    padding:0px 10px 0px 10px
+}

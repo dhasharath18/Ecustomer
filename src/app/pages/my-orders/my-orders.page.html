@@ -1,0 +1,47 @@
+<ion-header>
+  <app-header [data]="headerTitle"></app-header>
+</ion-header>
+
+<ion-content>
+    <p *ngIf="text" class="pd-20" style="color:#e32b2b">{{text}}</p>
+
+  <ion-list lines="full" *ngFor="let order of orderList; let i=index">
+   <ion-item button (click)="presentModal(order)" >
+
+     <ion-thumbnail slot="start">
+      <img src="{{order.order_data[0].prodcut_image}}" class="image" onerror="this.onerror=null;this.src='assets/image/noImage.jpeg';">
+    </ion-thumbnail>
+     <ion-label>
+      <div *ngFor="let o of order.order_data" >
+        <ion-text >
+         <h5 class="nowrap"> {{o.item_name}}</h5>
+        </ion-text>
+      </div>
+      <div>
+        <ion-text color="danger">
+      <h5 class="status">
+          {{order.status_val}} on {{order.order_date |date:"dd-MM-yyyy"}}
+      </h5>
+      </ion-text>
+      </div>
+    </ion-label>
+
+  </ion-item>
+</ion-list>
+
+
+
+  <!-- <********************EVENTS******************> -->
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingText="...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+</ion-content>
+<ion-footer>
+  <app-footer></app-footer>
+</ion-footer>

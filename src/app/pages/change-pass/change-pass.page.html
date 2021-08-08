@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button icon-only clear [routerLink]="'/settings'">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Change Password</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="pswdForm" class="p-10">
+    <ion-item>
+      <ion-label color="custom" position="floating">New Password<span class="mandatory">*</span></ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="custom" position="floating">Confirm Password<span class="mandatory">*</span></ion-label>
+      <ion-input type="password" formControlName="cnfpassword"></ion-input>
+    </ion-item>
+     <ion-label *ngIf="pswdForm.controls['cnfpassword'].errors?.confirmedValidator" > 
+       <p class="error">Password and Confirm password did not match.</p> 
+     </ion-label><br> 
+    <small style="padding:10px">Note : Password min length should be 4 character's.</small>
+    <ion-button class="m-10" expand="block" class="btn" (click)="submitPassword()" color="primary" [disabled]="!pswdForm.valid">
+      Submit
+    </ion-button>
+  </form>
+</ion-content>

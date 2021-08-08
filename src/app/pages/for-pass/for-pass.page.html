@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button icon-only clear [routerLink]="'/login/'" routerDirection="back">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Forgot Password</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="psdform">
+    <form [formGroup]="forgotPasswordForm" (ngSubmit)="submitforgotForm()">
+      <p>Please enter your Email</p>
+      <ion-item no-padding>
+        <ion-label position="floating">
+          <ion-icon name="mail" item-start></ion-icon>Email<span class="mandatory">*</span>
+        </ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <p ion-text
+        *ngIf="forgotPasswordForm.get('email').touched && forgotPasswordForm.get('email').hasError('required')">
+        <ion-text color="warning">
+          Required Field
+        </ion-text>
+      </p>
+
+      <div class="sub">
+        <ion-button type="submit" shape="round" [disabled]="!forgotPasswordForm.valid" color="primary">Reset Password
+        </ion-button>
+      </div>
+
+
+    </form>
+  </div>
+</ion-content>

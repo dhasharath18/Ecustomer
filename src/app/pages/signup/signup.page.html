@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button icon-only clear [routerLink]="'/login'">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="registerForm" (ngSubmit)="submitRegisterForm()">
+    <ion-item  no-padding >
+      <ion-label position="floating" >
+        Name<span class="mandatory">*</span>
+      </ion-label>
+      <ion-input  class="form-control" type="text"   formControlName="name"></ion-input>
+    </ion-item>
+
+    <p ion-text  *ngIf="registerForm.get('name').touched && registerForm.get('name').hasError('required')">
+      <ion-text color="warning">
+        Required Field
+      </ion-text>
+    </p>
+
+    <ion-item  no-padding >
+      <ion-label position="floating" >
+        Email<span class="mandatory">*</span>
+      </ion-label>
+      <ion-input type="email"   formControlName="email"></ion-input>
+    </ion-item>
+
+    <p ion-text  *ngIf="registerForm.get('email').touched && registerForm.get('email').hasError('required')">
+      <ion-text color="warning">
+        Required Field
+      </ion-text>
+    </p>
+
+    <ion-item  no-padding >
+      <ion-label position="floating" >Phone<span class="mandatory">*</span></ion-label>
+      <ion-input   type="number" formControlName="phone"></ion-input>
+    </ion-item>
+
+    <p ion-text color="warning"  *ngIf="registerForm.get('phone').touched && registerForm.get('phone').hasError('required')">
+      <ion-text color="warning">
+        Required Field
+      </ion-text>
+      </p>
+
+      <ion-item lines="none" text-wrap>
+      <ion-label><ion-text color="danger">Accept Terms&Conditions.</ion-text><span class="mandatory">*</span></ion-label>
+      <ion-checkbox slot="start" formControlName="acceptTerms" color="primary"></ion-checkbox>
+    </ion-item>
+
+
+    <ion-button  icon-left size="medium" class="btn" shape="round" type="submit" color="primary"  expand="block" [disabled]="!registerForm.valid" tappable>
+       <ion-icon name="log-in"></ion-icon>
+       Sign in
+      </ion-button>
+  </form>
+
+</ion-content>

@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button icon-only clear [routerLink]="'/ordersummary'">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="paymentModes.length>0">
+  <form [formGroup]="checkOutForm" (ngSubmit)="onSubmit()">
+    <h4>Payment</h4>
+    <ion-list>
+      <ion-radio-group formControlName="pay">
+        <ion-item text-wrap lines="none" *ngFor="let p of paymentModes">
+          <ion-label>
+            <img height="15" src="../../assets/image/storefront-outline.svg" />
+            {{p.payment_method}}
+            <p *ngIf="!price" class="color">
+              Total{{getTotal() | currency:'INR':'symbol'}}
+            </p>
+            <p *ngIf="price" class="color">
+              Total <span>{{price | currency:'INR':'symbol'}}</span>
+            </p>
+          </ion-label>
+          <ion-radio value="{{p.id}}"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </form>
+  <ion-button
+    type="submit"
+    (click)="onSubmit()"
+    class="submitbtn"
+    expand="block"
+    [disabled]="!checkOutForm.valid"
+    color="primary"
+    >Place Order</ion-button
+  >
+</ion-content>

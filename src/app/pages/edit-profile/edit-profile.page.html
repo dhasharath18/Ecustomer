@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button icon-only clear [routerLink]="'/profile'">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Manage Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="updateProfileForm" (ngSubmit)="submit()">
+    <ion-item>
+      <ion-label position="floating">
+        Name<span class="mandatory">*</span></ion-label
+      >
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">
+        Email<span class="mandatory">*</span></ion-label
+      >
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">
+        Phone<span class="mandatory">*</span></ion-label
+      >
+      <ion-input type="number" formControlName="phone"></ion-input>
+    </ion-item>
+    <ion-button type="submit" class="btn" expand="block">Submit</ion-button>
+  </form>
+</ion-content>

@@ -1,0 +1,54 @@
+<ion-header>
+  <app-header [data]="headerTitle"></app-header>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
+    <div class="center">
+      <img class="image" src="../../assets/image/logos.png" />
+    </div>
+
+    <ion-item class="padding">
+      <ion-label position="floating">
+        <ion-icon name="mail" item-start></ion-icon>
+        Email<span class="mandatory">*</span>
+      </ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item class="padding">
+      <ion-label position="floating">
+        <ion-icon name="lock-closed" item-start></ion-icon>
+        Password<span class="mandatory">*</span>
+      </ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col size="6" class="ion-align-self-end">
+        <p tappable class="padding" (click)="forgotPass()">
+          <ion-text color="danger"> Forgot Pass? </ion-text>
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <div>
+      <ion-button
+        icon-left
+        size="medium"
+        class="btn"
+        type="submit"
+        color="primary"
+        expand="block"
+        [disabled]="!loginForm.valid"
+        tappable
+      >
+        <ion-icon name="log-in"></ion-icon>Sign in</ion-button
+      >
+    </div>
+    <ion-text class="reg">
+      <h5 class="reg">Don't have an account ?</h5>
+      <p tappable class="register" (click)="register()">Sign up</p>
+    </ion-text>
+  </form>
+</ion-content>

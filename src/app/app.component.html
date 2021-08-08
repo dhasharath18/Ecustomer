@@ -1,0 +1,37 @@
+<ion-app>
+  <ion-menu contentId="content">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>
+          Menu
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <div *ngFor="let p of pages">
+        <ion-menu-toggle *ngIf="p.url">
+          <ion-item lines="none" routerDirection="root" [routerLink]="p.url" routerLinkActive="active">
+            <ion-icon part="icon" slot="start" [name]="p.icon"></ion-icon>
+            <ion-label>{{ p.title }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-item  lines="none" button *ngIf="p.children?.length > 0" detail="false" [class.active-parent]="p.open"
+          (click)="p.open=!p.open">
+          <ion-icon slot="start" *ngIf="p.open" name="arrow-down"></ion-icon>
+          <ion-icon slot="start" *ngIf="!p.open" name="arrow-forward"></ion-icon>
+          <ion-label>{{p.title}}</ion-label>
+        </ion-item>
+        <ion-list *ngIf="p.open">
+          <ion-menu-toggle>
+            <ion-item lines="none" class="sub-item" *ngFor="let sub of p.children" routerDirection="root"
+              [routerLink]="sub.url" routerLinkActive="active">
+              <ion-icon slot="start" [name]="sub.icon"></ion-icon>
+              <ion-label>{{ sub.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </div>
+    </ion-content>
+  </ion-menu>
+<ion-router-outlet id="content" main></ion-router-outlet>
+</ion-app>

@@ -1,0 +1,57 @@
+.nowrap{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.addButton{
+    display: grid;
+    justify-content:center;
+    align-items:center
+}
+.cartemp{
+    display:flex;
+  justify-content:center;
+}
+.emp{
+    display:flex;
+  justify-content:center;
+}
+.color{
+    color: #ff3200
+}
+.dotted{
+    margin-top: 5px;
+    border: 0px;
+      border-top:2px dotted grey;
+  }
+  .total{
+      display:flex;
+      justify-content:center;
+      font-weight:bold;
+  }
+  .price {
+      color:#ff3200
+  }
+  .del{
+    color:#ff3200
+  }
+  .checkout{
+    margin-right: 20px;
+    margin-left: 20px;
+    padding: 3px;
+  }
+  ion-thumbnail{
+    height: 65px;
+    width: 23%;
+    border-radius:6px
+}
+.image{
+
+    border-radius:6px
+}
+.btn-c {
+  position: fixed;
+  left: 0;
+  bottom: 0px;
+  right: 0;
+}

@@ -1,0 +1,84 @@
+.adbutton{
+   
+    margin-top: 24px;
+    
+}
+.form{
+    margin-top: 10px;
+}
+.img{
+    min-width: 30%;
+    height: auto;
+}
+ion-label{
+    margin-left: 25px;
+}
+.border{
+    border:1px solid ;
+    border-radius:0.5px;
+    margin: 10px;
+}
+.heading{
+    font-size: 20px;
+   
+    padding-top: 10px;
+
+}
+
+.row{
+    margin-top: 10px;
+}
+.icon{
+    margin-top: -6px;
+}
+.address{
+    padding: 10px 0px 0px 10px;
+    color:#000
+}
+h4{
+    padding-left: 7px;
+}
+.mt-20{
+    margin-top: 20px;
+}
+h3{
+    padding: 10px;
+   
+}
+.sbutton{
+    color: #ff3200;
+    font-size: 14px;
+    display: grid;
+    justify-content: center;
+    height: 30px;
+
+}
+
+.mandatory{
+    color: #ff3200
+}
+.nowrap{
+    white-space: nowrap;
+}
+.closeIcon{
+    font-size: 28px;
+    color: red;
+    float: right;
+}
+.closeIcon::after{
+    clear: both;
+}
+.btn{
+    justify-content: end;
+    display: grid;
+    align-items: end;
+}
+.linespace{
+    line-height:20px
+}
+h5{
+    text-align: center;
+}
+ion-item{
+    --background: var(--ion-color-primary, var(--ion-background-color, #fff));
+}

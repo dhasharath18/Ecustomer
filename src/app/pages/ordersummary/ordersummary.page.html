@@ -1,0 +1,194 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button icon-only clear (click)="goBack()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title >Order Summary</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="lastOrderdAddress" class="padding-left">
+<ion-radio-group *ngIf="!addressSelect" (ionChange)="getselectedAddress($event)" >
+  <ion-radio slot="start" value="{{addressSelect?addressSelect:lastOrderdAddress.id}}"></ion-radio>
+</ion-radio-group>
+<ion-radio-group *ngIf="addressSelect" (ionChange)="getselectedAddress($event)" value="addressSelect">
+  <ion-radio slot="start" value="addressSelect"></ion-radio>
+</ion-radio-group>
+
+        <ion-label>
+
+          <p class="font-size">
+            <ion-text color="dark">
+              {{lastOrderdAddress.customer_name}}
+            </ion-text>
+          </p>
+
+          <p class="font-size">
+            <ion-text color="dark">
+              {{lastOrderdAddress.address}}
+            </ion-text>
+          </p>
+          <p class="font-size">
+            <ion-text color="dark">
+              {{lastOrderdAddress.state_name}}
+            </ion-text>
+          </p>
+          <p class="font-size">
+            <ion-text color="dark">
+              {{lastOrderdAddress.pincode}}
+            </ion-text>
+          </p>
+          <p class="font-size">
+            <ion-text color="dark">
+              {{lastOrderdAddress.phone}}
+            </ion-text>
+          </p>
+          <ion-button class="chbtn" type="button" expand="block" (click)="goToAddressList()">Change or Add
+            Address</ion-button>
+
+        </ion-label>
+      </div>
+
+  <div *ngIf="cartItems">
+  <ion-list *ngFor="let item of cartItems; let i=index">
+  <ion-card>
+    <ion-card-header>
+      <h5 class="nowrap"> {{ item.name }} </h5><br>
+    </ion-card-header>
+     <ion-card-content>
+      <ion-row>
+        <ion-col size="4">
+          <img src={{item.image}} class="image" onerror="this.onerror=null;this.src='assets/image/noImage.jpeg';">
+      </ion-col>
+    <ion-col size="8">
+      <ion-label class="ion-text-wrap">
+        <span *ngIf="item.discounted_price==='0'" class="pricing"> ₹{{item.actual_price }}</span>
+        <span *ngIf="item.discounted_price!=='0'" class="pricing"> ₹{{getitem(item) }}</span>
+
+        <span *ngIf="item.discounted_price!=='0'"><del> ₹{{item.actual_price }}</del>
+        </span>
+        <div *ngIf="item.discounted_price!=='0'" class="save"> save₹{{item.discounted_price }}</div>
+      </ion-label>
+    </ion-col>
+    </ion-row>
+  </ion-card-content>
+  </ion-card>
+  </ion-list>
+  <ion-list >
+  <ion-card>
+    <ion-card-header>
+
+      <h5>
+        <ion-text color="dark">   Price Details</ion-text>
+      </h5>
+
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col  class="ion-align-self-start">
+        <p>
+          <ion-text color="dark"> Price</ion-text>
+        </p>
+        </ion-col>
+        <ion-col  class="ion-align-self-end">
+          <p>
+            <ion-text color="dark">  ₹{{totalActualPrice }}</ion-text>
+          </p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col  class="ion-align-self-start">
+          <p>
+            <ion-text color="dark">Discount</ion-text>
+          </p>
+        </ion-col>
+        <ion-col  class="ion-align-self-end">
+        <p>
+          <ion-text color="dark">₹{{totalDiscount }}</ion-text>
+        </p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col  class="ion-align-self-start">
+          <p>
+            <ion-text color="dark">Delivery Charges</ion-text>
+          </p>
+        </ion-col>
+        <ion-col  class="ion-align-self-end">
+          <p>
+            <ion-text color="dark">₹40</ion-text>
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  </ion-list>
+</div>
+<div *ngIf="!cartItems">
+  <ion-list *ngFor="let item of buyNowItem; let i=index">
+    <ion-card>
+      <ion-card-header>
+        <span class="nowrap"> {{ item.name }} </span><br>
+      </ion-card-header>
+       <ion-card-content>
+        <ion-row>
+          <ion-col size="4">
+            <img src={{item.image}} class="image" onerror="this.onerror=null;this.src='assets/image/noImage.jpeg';">
+        </ion-col>
+      <ion-col size="8">
+        <ion-label class="ion-text-wrap">
+          <span *ngIf="item.discounted_price==='0'" class="pricing"> ₹{{item.actual_price }}</span>
+          <span *ngIf="item.discounted_price!=='0'" class="pricing"> ₹{{getitem(item) }}</span>
+
+          <span *ngIf="item.discounted_price!=='0'"><del> ₹{{item.actual_price }}</del>
+          </span>
+          <div *ngIf="item.discounted_price!=='0'" class="save"> save₹{{item.discounted_price }}</div>
+        </ion-label>
+      </ion-col>
+      </ion-row>
+    </ion-card-content>
+    </ion-card>
+    </ion-list>
+    <ion-list *ngFor="let item of buyNowItem; let i=index">
+    <ion-card>
+      <ion-card-header>
+        Price Details
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row>
+          <ion-col  class="ion-align-self-start">
+            Price
+          </ion-col>
+          <ion-col  class="ion-align-self-end">
+            <span class="ion-text-end">     ₹{{item.actual_price }}</span>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col  class="ion-align-self-start">
+             Discount
+          </ion-col>
+          <ion-col  class="ion-align-self-end">
+          <span class="ion-text-end"> ₹{{item.discounted_price }}</span>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col  class="ion-align-self-start">
+         Delivery Charges
+          </ion-col>
+          <ion-col  class="ion-align-self-end">
+            <span class="ion-text-end">    ₹40</span>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+    </ion-list>
+</div>
+
+</ion-content>
+<ion-footer color="danger">
+  <ion-button  type="button" expand="block" color="danger" [disabled] ="!addressSelect" (click)="checkout()">Continue
+  </ion-button>
+</ion-footer>

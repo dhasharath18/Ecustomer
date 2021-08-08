@@ -1,0 +1,18 @@
+<ion-header>
+ <app-header [data]="headerTitle"></app-header>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+    <ng-container *ngFor="let set of settings; let index = index">
+      <ion-item button [routerLink]="set.link" routerDirection="forward">
+        <ion-icon color="primary" slot="start" [name]="set.icon"></ion-icon>
+        <ion-label>{{set.id}}</ion-label>
+      </ion-item>
+    </ng-container>
+  
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <app-footer></app-footer>
+</ion-footer>

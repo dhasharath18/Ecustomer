@@ -1,0 +1,112 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button icon-only clear [routerLink]="'/ordersummary'">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="recentAddress">
+
+  <ion-button (click)="presentModal()" class="btn" fill="clear" color="dark" ><ion-icon class="icon" name="add"></ion-icon>Add a new address</ion-button>
+
+    <ion-radio-group  (ionChange)="getselectedAddress($event)" value="recentAddress.id">
+    <ion-card>
+      <ion-card-header>
+        <ion-item lines="none">
+          <ion-label>  {{recentAddress.customer_name}}</ion-label>
+           <ion-radio slot="start" value="recentAddress.id" ></ion-radio>
+        </ion-item>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label>
+
+
+          <p>
+            <ion-text>
+              {{recentAddress.address}}
+            </ion-text>
+          </p>
+          <p>
+            <ion-text>
+              {{recentAddress.state_name}}
+            </ion-text>
+          </p>
+          <p>
+            <ion-text>
+              {{recentAddress.pincode}}
+            </ion-text>
+          </p>
+
+            <ion-row>
+              <ion-col size="6">
+                <p>
+                <ion-text>
+                  {{recentAddress.phone}}
+                </ion-text>
+              </p>
+              </ion-col>
+              <ion-col  class="ion-align-self-end" size="6">
+                <ion-button class="ion-text-end" type="button" expand="block" (click)="editrecentAddress()" fill="clear">Edit
+                </ion-button>
+              </ion-col>
+            </ion-row>
+        </ion-label>
+      </ion-card-content>
+    </ion-card>
+
+  <ion-list *ngFor="let a of addressList; let i=index">
+    <ion-card>
+
+        <ion-item lines="none">
+          <ion-label> {{a.customer_name}}</ion-label>
+           <ion-radio slot="start" value="{{a.id}}"></ion-radio>
+        </ion-item>
+
+      <ion-card-content>
+        <ion-label>
+
+          <p>
+            <ion-text>
+              {{a.address}}
+            </ion-text>
+          </p>
+          <p>
+            <ion-text>
+              {{a.state_name}}
+            </ion-text>
+          </p>
+          <p>
+            <ion-text>
+              {{a.pincode}}
+            </ion-text>
+          </p>
+
+            <ion-row>
+              <ion-col size="6">
+                <p>
+                <ion-text>
+                  {{a.phone}}
+                </ion-text>
+              </p>
+              </ion-col>
+              <ion-col  class="ion-align-self-end" size="6">
+                <ion-button class="ion-text-end" type="button" expand="block" (click)="editAddress(a)" fill="clear">Edit
+                </ion-button>
+              </ion-col>
+            </ion-row>
+        </ion-label>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-radio-group>
+</div>
+
+</ion-content>
+<ion-footer color="primary">
+  <ion-button expand="full" (click)="orderSummary()">Deliver Here</ion-button>
+</ion-footer>

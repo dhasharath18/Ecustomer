@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button icon-only clear (click)="remove()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Order Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="orderProfile">
+  <h4>View Order Details</h4>
+
+  <div class="border pad-10">
+    <ion-row class="ion-no-padding">
+      <ion-col size="5">
+        <ion-text color="dark"> Order Date</ion-text>
+      </ion-col>
+      <ion-col size="7" class="ion-text-left ion-text-capitalize">
+        <ion-text color="dark">
+          {{orderProfile.order_date | date:"dd MMM YYYY"}}
+        </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-no-padding">
+      <ion-col size="5">
+        <ion-text color="dark"> Order ID</ion-text>
+      </ion-col>
+      <ion-col size="7" class="ion-text-left ion-text-capitalize">
+        <ion-text color="dark"> {{orderProfile.order_id}} </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-no-padding">
+      <ion-col size="5">
+        <ion-text color="dark"> Order Status</ion-text>
+      </ion-col>
+      <ion-col size="7" class="ion-text-left ion-text-capitalize">
+        <ion-text color="dark"> {{orderProfile.status_val}} </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-no-padding">
+      <ion-col size="5">
+        <ion-text color="dark"> Order Total</ion-text>
+      </ion-col>
+      <ion-col size="7" class="ion-text-left ion-text-capitalize">
+        <ion-text color="dark"
+          >{{orderProfile.total_price | currency :"INR"}}</ion-text
+        >
+      </ion-col>
+    </ion-row>
+  </div>
+  <h5>Shipment && Price Details</h5>
+  <div class="border" *ngFor="let o of orderInfo">
+
+    <ion-text color="dark">
+      <p class="pd">{{o.item_name}}</p>
+    </ion-text>
+    <ion-row class="ion-no-padding">
+      <ion-col size="5">
+        <ion-text color="dark"> Quantity</ion-text>
+      </ion-col>
+      <ion-col size="7" class="ion-text-left ion-text-capitalize">
+        <ion-text color="dark"> {{o.quantity}} </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-no-padding">
+      <ion-col size="5">
+        <ion-text color="dark">  Price</ion-text>
+      </ion-col>
+      <ion-col size="7" class="ion-text-left ion-text-capitalize">
+        <ion-text color="dark"> {{o.item_price}} </ion-text>
+      </ion-col>
+    </ion-row>
+
+  </div>
+
+  <h5>Shipping Address</h5>
+  <div class="border">
+    <ion-text color="dark">
+      <p class="pd address">{{orderProfile.address}}</p>
+      <p class="pd">{{orderProfile.state_name}}</p>
+      <p class="pd">{{orderProfile.pincode}}</p>
+    </ion-text>
+  </div>
+  <h5>Order Tracking</h5>
+
+  <div>
+    <ion-list *ngFor="let track of trackingData" class="StepProgress">
+      <span class="StepProgress-item is-done"
+        ><strong> {{track.status_val}}</strong></span
+      >
+    </ion-list>
+  </div>
+</ion-content>
